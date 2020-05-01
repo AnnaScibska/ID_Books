@@ -1,0 +1,17 @@
+<div *ngFor="let book of books">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img mat-card-image src={{book.avatar}} alt={{book.last_name}}></div>
+      <mat-card-title>{{book.last_name}}</mat-card-title>
+      <mat-card-subtitle>{{book.first_name}}</mat-card-subtitle>
+      <span class="spacer"></span>
+      <button mat-raised-button [routerLink]="['/books', book.id]">see details</button>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<mat-paginator [length]=total
+               [pageSize]=per_page
+               [pageSizeOptions]="[3]"
+               (page)="updateUsersList($event)">
+</mat-paginator>

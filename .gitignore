@@ -8,7 +8,7 @@
 /bazel-out
 
 # dependencies
-/id-books-api/node_modules
+/node_modules
 /id-books-gui/node_modules
 
 # profiling files
@@ -16,7 +16,7 @@ chrome-profiler-events*.json
 speed-measure-plugin*.json
 
 # IDEs and editors
-/id-books-api/.idea
+.idea
 /id-books-gui/.idea
 .project
 .classpath

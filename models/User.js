@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema({
     books: [
         {
             book: {
-                type: Schema.Types.ObjectId
+                type: Schema.Types.ObjectId,
+                ref: 'books'
             },
             date: {
                 type: Date,

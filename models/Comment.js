@@ -3,10 +3,12 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
     user: {
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
+        ref: 'users' // ?? , required: true
     },
     book: {
-        type: Schema.Types.ObjectId
+        type: Schema.Types.ObjectId ,
+        ref: 'books' // ?? , required: true
     },
     text: {
         type: String,

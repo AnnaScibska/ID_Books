@@ -18,6 +18,12 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './authorization/register/register.component';
+import { LoginComponent } from './authorization/login/login.component';
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import { ValidateService } from './core/services/validate.service';
+import { AuthService } from './core/services/auth.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     IntroComponent,
     NotFoundComponent,
     BooksListComponent,
-    ShowBookComponent
+    ShowBookComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +48,15 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     HttpClientModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    FlashMessagesModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    ValidateService,
+    FlashMessagesService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

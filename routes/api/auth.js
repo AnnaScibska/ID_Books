@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-// const bcrypt = require('bcryptjs');
-// const auth = require('../../middleware/auth');
-// const jwt = require('jsonwebtoken');
-// const config = require('config');
+const bcrypt = require('bcryptjs');
+const auth = require('../../middleware/auth');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -11,11 +11,9 @@ const User = require('../../models/User');
 // @route    GET api/auth
 // @desc     Get user by token
 // @access   Private
-
-// router.get('/', auth, async (req, res) => {
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select('-password');
+        const user = await User.findById(req.user.id).select('-password'); // don't send password
         res.json(user);
     } catch (err) {
         console.error(err.message);
@@ -49,9 +47,7 @@ router.post(
                     .json({ errors: [{ msg: 'Invalid Credentials' }] });
             }
 
-            // const isMatch = await bcrypt.compare(password, user.password);
-
-            const isMatch = password === user.password
+            const isMatch = await bcrypt.compare(password, user.password);
 
             if (!isMatch) {
                 return res
@@ -65,17 +61,15 @@ router.post(
                 }
             };
 
-            // jwt.sign(
-            //     payload,
-            //     config.get('jwtSecret'),
-            //     { expiresIn: 360000 },
-            //     (err, token) => {
-            //         if (err) throw err;
-            //         res.json({ token });
-            //     }
-            // );
-
-            res.send("True")
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 360000 },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
 
         } catch (err) {
             console.error(err.message);

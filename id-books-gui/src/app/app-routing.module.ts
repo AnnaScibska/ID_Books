@@ -5,33 +5,36 @@ import { NotFoundComponent } from './content/not-found/not-found.component';
 import { BooksListComponent } from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
 
-
 const routes: Routes = [
   {
     path: 'intro',
-    component: IntroComponent
+    component: IntroComponent,
   },
   {
     path: '',
     redirectTo: 'intro',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'books',
-    component: BooksListComponent
+    component: BooksListComponent,
   },
   {
     path: 'books/:bookId',
-    component: ShowBookComponent
+    component: ShowBookComponent,
+  },
+  {
+    path: 'favoris',
+    component: ShowBookComponent,
   },
   {
     path: '**',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

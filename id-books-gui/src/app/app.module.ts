@@ -13,12 +13,16 @@ import { IntroComponent } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
 import { BooksListComponent } from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
-import { MatCardModule} from '@angular/material/card';
-import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-
+import { HttpModule } from '@angular/http';
+import { FavouriteService } from './core/services/favourite.service';
+import { SearchService } from './core/services/search.service';
+import { BooksService } from './core/services/books.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     IntroComponent,
     NotFoundComponent,
     BooksListComponent,
-    ShowBookComponent
+    ShowBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +44,11 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     HttpClientModule,
     MatButtonModule,
-    FormsModule
+    MatInputModule,
+    FormsModule,
+    HttpModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [FavouriteService, SearchService, BooksService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

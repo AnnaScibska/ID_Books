@@ -8,21 +8,22 @@ import { RegisterComponent } from './authorization/register/register.component';
 import { LoginComponent } from './authorization/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
-
 const routes: Routes = [
   {
     path: 'intro',
-    component: IntroComponent
+    component: IntroComponent,
   },
   {
     path: '',
     redirectTo: 'intro',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'books',
     component: BooksListComponent,
+
     canActivate: [AuthGuard]
+
   },
   {
     path: 'books/:bookId',
@@ -36,15 +37,20 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+
+  },
+  {
+    path: 'favoris',
+    component: ShowBookComponent,
   },
   {
     path: '**',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

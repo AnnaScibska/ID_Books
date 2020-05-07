@@ -12,4 +12,12 @@ export class Book {
   first_name: string;
   last_name: string;
   avatar: string;
+  ////
+  title: string;
+  authors: string[];
+  categories: string;
+  imageLink: string;
+  infoLink: string;
+  textSnippet: string;
+  previewLink: string;
 }

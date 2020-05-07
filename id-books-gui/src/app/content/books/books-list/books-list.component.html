@@ -1,17 +1,61 @@
-<div *ngFor="let book of books">
+<div>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchString"
+      class="search"
+      placeholder="recherche sur google books"
+    />
+  </mat-form-field>
+
+  <button mat-raised-button (click)="search()">rechercher google</button>
+</div>
+<button mat-raised-button routerLink="/favoris">mes favoris</button>
+<hr />
+
+<div class="book" *ngFor="let bookItem of booksList">
   <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"><img mat-card-image src={{book.avatar}} alt={{book.last_name}}></div>
-      <mat-card-title>{{book.last_name}}</mat-card-title>
-      <mat-card-subtitle>{{book.first_name}}</mat-card-subtitle>
+      <div mat-card-avatar class="example-header-image">
+        <img
+          mat-card-image
+          *ngIf="bookItem['volumeInfo']['imageLinks']"
+          src="{{
+            bookItem['volumeInfo']['imageLinks']['thumbnail'] ||
+              bookItem['volumeInfo']['imageLinks']['smallThumbnail']
+          }}"
+          title="{{ bookItem['volumeInfo']['title'] }}"
+          class="image"
+        />
+      </div>
+      <mat-card-title>{{ bookItem["volumeInfo"]["title"] }}</mat-card-title>
+      <mat-card-subtitle>{{
+        bookItem["volumeInfo"]["authors"]
+      }}</mat-card-subtitle>
+
       <span class="spacer"></span>
-      <button mat-raised-button [routerLink]="['/books', book.id]">see details</button>
     </mat-card-header>
+    <button
+      mat-raised-button
+      class="button-favourite"
+      (click)="addToFavourite(bookItem)"
+    >
+      Ajouter aux favoris
+    </button>
+    <button
+      mat-raised-button
+      [routerLink]="['/books', bookItem['volumeInfo']['id']]"
+    >
+      see details
+    </button>
   </mat-card>
 </div>
 
-<mat-paginator [length]=total
-               [pageSize]=per_page
-               [pageSizeOptions]="[3]"
-               (page)="updateUsersList($event)">
+<mat-paginator
+  [length]="total"
+  [pageSize]="per_page"
+  [pageSizeOptions]="[3]"
+  (page)="updateUsersList($event)"
+>
 </mat-paginator>

@@ -13,8 +13,9 @@ import { IntroComponent } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
 import { BooksListComponent } from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
-import { MatCardModule} from '@angular/material/card';
-import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +25,9 @@ import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messag
 import { ValidateService } from './core/services/validate.service';
 import { AuthService } from './core/services/auth.service';
 import { HttpModule } from '@angular/http';
+import { FavouriteService } from './core/services/favourite.service';
+import { SearchService } from './core/services/search.service';
+import { BooksService } from './core/services/books.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { HttpModule } from '@angular/http';
     MatPaginatorModule,
     HttpClientModule,
     MatButtonModule,
+    MatInputModule,
+    FormsModule,
+    HttpModule,
     FormsModule,
     FlashMessagesModule,
     HttpModule
@@ -55,8 +62,10 @@ import { HttpModule } from '@angular/http';
   providers: [
     ValidateService,
     FlashMessagesService,
-    AuthService
+    AuthService,
+    FavouriteService, SearchService, BooksService
   ],
   bootstrap: [AppComponent]
+
 })
-export class AppModule { }
+export class AppModule {}

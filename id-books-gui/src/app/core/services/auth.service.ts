@@ -33,6 +33,7 @@ export class AuthService {
     return this.http.post('http://localhost:5000/api/auth', user, {headers})
       .pipe(map(res => res.json()));
   }
+
   storeUserData(token, user)
   {
     localStorage.setItem('id_token', token);
@@ -40,16 +41,6 @@ export class AuthService {
     this.authToken = token;
     this.user = user;
   }
-
-  // getProfile()
-  // {
-  //   const headers = new Headers();
-  //   this.loadToken();
-  //   headers.append( 'Authorization', this.authToken);
-  //   headers.append('Content-type', 'application/json');
-  //   return this.http.get('http://localhost:3000/users/profile', {headers})
-  //     .pipe(map(res => res.json()));
-  // }
 
   loadToken()
   {

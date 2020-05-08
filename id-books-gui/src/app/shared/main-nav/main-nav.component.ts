@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ActivationEnd, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import {AuthService} from '../../core/services/auth.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-main-nav',
@@ -18,7 +20,12 @@ export class MainNavComponent implements OnInit {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private authService: AuthService,
+    private flashMessage: FlashMessagesService
+  ) {}
 
   ngOnInit(): void {
     // Hide Navbar if the router is 'intro'
@@ -34,6 +41,12 @@ export class MainNavComponent implements OnInit {
       }
     });
     this.isNavHidden = false;
+  }
+
+  logOut() {
+    this.authService.logOut();
+    this.flashMessage.show('You are now logged out', {cssClass: 'alert-success', timeout: 3000});
+    this.router.navigate(['/intro']);
   }
 
 }

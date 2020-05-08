@@ -1,0 +1,29 @@
+<div class="modal">
+  <form >
+
+    <h1 mat-dialog-title>Login</h1>
+
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="data.email" name="email" type="email" class="form-control" autocomplete="new">
+      </mat-form-field><br>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="data.password" name="password" type="password" class="form-control" autocomplete="new">
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">No Thanks</button>
+      <button
+        mat-button
+        [mat-dialog-close]="[data.email, data.password]"
+        cdkFocusInitial
+      >Login</button>
+    </div>
+
+  </form>
+</div>
+
+

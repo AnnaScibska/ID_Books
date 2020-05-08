@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { IntroComponent } from './content/intro/intro.component';
+import { IntroComponent, LoginDialog, SignupDialog } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
 import { BooksListComponent } from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
@@ -28,6 +28,7 @@ import { HttpModule } from '@angular/http';
 import { FavouriteService } from './core/services/favourite.service';
 import { SearchService } from './core/services/search.service';
 import { BooksService } from './core/services/books.service';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { BooksService } from './core/services/books.service';
     BooksListComponent,
     ShowBookComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LoginDialog,
+    SignupDialog
   ],
   imports: [
     BrowserModule,
@@ -56,8 +59,8 @@ import { BooksService } from './core/services/books.service';
     FormsModule,
     HttpModule,
     FormsModule,
-    FlashMessagesModule,
-    HttpModule
+    FlashMessagesModule.forRoot(),
+    MatDialogModule
   ],
   providers: [
     ValidateService,

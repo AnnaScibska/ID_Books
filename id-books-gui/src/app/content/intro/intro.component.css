@@ -20,7 +20,7 @@
 }
 
 h1 {
-  padding-top: 2.0em;
+  padding-top: 2.5em;
   font-size: 100px;
   font-family: 'hauntedEyes', Arial, serif;
 }
@@ -39,5 +39,61 @@ p {
 }
 
 button {
-  margin-top: 1em;
+  margin: 1em;
+  font-weight: 600;
 }
+
+::ng-deep.mat-dialog-container {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .8);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color:rgba(255, 255, 255, 0.5);
+  filer: blur(20px);
+}
+
+::ng-deep.mat-dialog-container h1 {
+  text-align: center;
+  font-weight: 600;
+}
+
+::ng-deep.mat-dialog-container button {
+  font-weight: 600;
+}
+
+::ng-deep.mat-dialog-container div.modal {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+::ng-deep.mat-dialog-container form {
+  vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/*#grayOutDiv*/
+/*{*/
+/*  background-color: #333;*/
+/*  opacity: 0.7;*/
+/*  position: fixed;*/
+/*  top: 0px;*/
+/*  left: 0px;*/
+/*  height: 100%;*/
+/*  width: 100%;*/
+/*  overflow: hidden;*/
+/*  z-index: 9999;*/
+/*}*/
+
+/*.flash-message*/
+/*{*/
+/*  z-index: 10000;*/
+/*  position: relative;*/
+/*}*/

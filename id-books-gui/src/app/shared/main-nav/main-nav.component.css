@@ -36,3 +36,7 @@ mat-toolbar a {
     display: none;
   }
 }
+
+a {
+  cursor: pointer;
+}

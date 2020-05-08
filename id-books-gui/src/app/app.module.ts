@@ -21,13 +21,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './authorization/register/register.component';
 import { LoginComponent } from './authorization/login/login.component';
-import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import {
+  FlashMessagesModule,
+  FlashMessagesService,
+} from 'angular2-flash-messages';
 import { ValidateService } from './core/services/validate.service';
 import { AuthService } from './core/services/auth.service';
 import { HttpModule } from '@angular/http';
 import { FavouriteService } from './core/services/favourite.service';
 import { SearchService } from './core/services/search.service';
 import { BooksService } from './core/services/books.service';
+import { DetailsBookComponent } from './content/books/details-book/details-book.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { BooksService } from './core/services/books.service';
     BooksListComponent,
     ShowBookComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DetailsBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,15 +62,16 @@ import { BooksService } from './core/services/books.service';
     HttpModule,
     FormsModule,
     FlashMessagesModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [
     ValidateService,
     FlashMessagesService,
     AuthService,
-    FavouriteService, SearchService, BooksService
+    FavouriteService,
+    SearchService,
+    BooksService,
   ],
-  bootstrap: [AppComponent]
-
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

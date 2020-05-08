@@ -36,3 +36,16 @@ mat-toolbar a {
     display: none;
   }
 }
+
+.logo {
+  border-radius: 50%;
+  width: 60px;
+  margin-right: 10px;
+}
+
+h1,
+a {
+  font-family: hauntedEyes;
+  font-style: italic;
+  font-size: larger;
+}

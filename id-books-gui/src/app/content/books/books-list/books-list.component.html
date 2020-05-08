@@ -1,4 +1,4 @@
-<div>
+<div class="google-serach-bar">
   <mat-form-field>
     <input
       matInput
@@ -9,7 +9,11 @@
     />
   </mat-form-field>
 
-  <button mat-raised-button (click)="search()">rechercher google</button>
+  <button class="search-icon" mat-raised-button (click)="search()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon"
+      >search</mat-icon
+    >
+  </button>
 </div>
 <button mat-raised-button routerLink="/favoris">mes favoris</button>
 <hr />

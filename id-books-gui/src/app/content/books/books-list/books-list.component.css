@@ -16,3 +16,16 @@ img {
 mat-card {
   margin: 15px auto;
 }
+
+mat-form-field {
+  width: 60%;
+  margin-right: 10px;
+}
+
+
+.google-serach-bar {
+  margin: 5%;
+  height: 40px;
+  display: flex;
+  align-content: space-between;
+}

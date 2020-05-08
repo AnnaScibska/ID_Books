@@ -30,9 +30,13 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
       >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon class="menu" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>LOGO HERE</span>
+      <img
+        class="logo"
+        src="https://media.giphy.com/media/xT8qBt3pdiCZrk3erS/giphy.gif"
+      />
+      <h1 class="id_books">ID Books</h1>
       <span class="spacer"></span>
       <!--<span *ngIf="!isHandset$ | async"> -->
       <!-- TODO: hide menu if small screen-->

@@ -15,6 +15,16 @@ export class ShowBookComponent implements OnInit {
   ///////
   favouriteBooks: Book[] = [];
 
+  books: Book[];
+  pageNumber = 0;
+  per_page: number;
+  total: number;
+
+  LocalStorage = localStorage;
+  json = JSON;
+  booksList: Book[] = [];
+  searchString = '';
+
   constructor(
     private userService: BooksService,
     private activatedRoute: ActivatedRoute,

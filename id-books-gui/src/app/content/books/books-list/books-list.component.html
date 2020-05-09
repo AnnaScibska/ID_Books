@@ -47,11 +47,11 @@
     >
       Ajouter aux favoris
     </button>
-    <button
-      mat-raised-button
-      [routerLink]="['/books', bookItem['volumeInfo']['id']]"
-    >
+    <button mat-raised-button [routerLink]="['/books', bookItem['id']]">
       see details
+    </button>
+    <button mat-raised-button (click)="openDialog(bookItem)">
+      Open dialog
     </button>
   </mat-card>
 </div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +12,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
-import { BooksListComponent } from './content/books/books-list/books-list.component';
+import {
+  BooksListComponent,
+  DetailsDialComponent,
+} from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -31,7 +35,9 @@ import { HttpModule } from '@angular/http';
 import { FavouriteService } from './core/services/favourite.service';
 import { SearchService } from './core/services/search.service';
 import { BooksService } from './core/services/books.service';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { DetailsBookComponent } from './content/books/details-book/details-book.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -43,6 +49,7 @@ import { DetailsBookComponent } from './content/books/details-book/details-book.
     ShowBookComponent,
     RegisterComponent,
     LoginComponent,
+    DetailsDialComponent,
     DetailsBookComponent,
   ],
   imports: [
@@ -63,7 +70,11 @@ import { DetailsBookComponent } from './content/books/details-book/details-book.
     FormsModule,
     FlashMessagesModule,
     HttpModule,
+    MatDialogModule,
   ],
+  // entryComponents: [BooksListComponent, DetailsBookComponent],
+  // declarations: [BooksListComponent, DetailsBookComponent],
+  // bootstrap: [BooksListComponent],
   providers: [
     ValidateService,
     FlashMessagesService,
@@ -71,7 +82,15 @@ import { DetailsBookComponent } from './content/books/details-book/details-book.
     FavouriteService,
     SearchService,
     BooksService,
+    // {
+    //   provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+    //   useValue: { appearance: 'fill' },
+    // },
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+// platformBrowserDynamic()
+//   .bootstrapModule(AppModule)
+//   .catch((err) => console.error(err));

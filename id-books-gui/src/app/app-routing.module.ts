@@ -26,8 +26,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'books/:bookId',
-    component: ShowBookComponent,
+    path: 'books/:isbn',
+    component: DetailsBookComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -42,10 +42,7 @@ const routes: Routes = [
     path: 'favoris',
     component: ShowBookComponent,
   },
-  {
-    path: 'details',
-    component: DetailsBookComponent,
-  },
+
   {
     path: '**',
     component: NotFoundComponent,

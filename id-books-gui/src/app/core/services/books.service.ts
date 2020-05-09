@@ -4,11 +4,10 @@ import { Book } from '../models/book';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BooksService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getBooks(pageNumber: number): Observable<Book[]> {
     pageNumber++;
@@ -17,7 +16,7 @@ export class BooksService {
   }
 
   getBook(bookId: number): Observable<Book> {
-    const url = 'https://reqres.in/api/users/' + bookId;
+    const url = 'https://reqres.in/api/books/' + bookId;
     return this.http.get<Book>(url);
   }
 }

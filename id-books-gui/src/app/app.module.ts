@@ -18,16 +18,16 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 import { ValidateService } from './core/services/validate.service';
 import { AuthService } from './core/services/auth.service';
-import { HttpModule } from '@angular/http';
 import { FavouriteService } from './core/services/favourite.service';
 import { SearchService } from './core/services/search.service';
 import { BooksService } from './core/services/books.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginDialogComponent } from './authorization/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './authorization/register-dialog/register-dialog.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
+import { ErrorMessageService } from './core/services/error-message.service';
 
 @NgModule({
   declarations: [
@@ -54,16 +54,20 @@ import { RegisterDialogComponent } from './authorization/register-dialog/registe
     MatButtonModule,
     MatInputModule,
     FormsModule,
-    HttpModule,
-    FormsModule,
-    FlashMessagesModule.forRoot(),
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     ValidateService,
-    FlashMessagesService,
     AuthService,
-    FavouriteService, SearchService, BooksService
+    FavouriteService,
+    SearchService,
+    BooksService,
+    ErrorMessageService,
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {duration: 7000, verticalPosition: 'top'}
+    }
   ],
   bootstrap: [AppComponent]
 

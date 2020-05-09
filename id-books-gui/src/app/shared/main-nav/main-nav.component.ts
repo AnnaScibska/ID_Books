@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ActivationEnd, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import {AuthService} from '../../core/services/auth.service';
-import {FlashMessagesService} from 'angular2-flash-messages';
+import { AuthService } from '../../core/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-nav',
@@ -24,7 +24,7 @@ export class MainNavComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private router: Router,
     private authService: AuthService,
-    private flashMessage: FlashMessagesService
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class MainNavComponent implements OnInit {
 
   logOut() {
     this.authService.logOut();
-    this.flashMessage.show('You are now logged out', {cssClass: 'alert-success', timeout: 3000});
+    this.snackBar.open('You are now logged out', 'Close');
     this.router.navigate(['/intro']);
   }
 

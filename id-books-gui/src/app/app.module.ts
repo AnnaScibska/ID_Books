@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
@@ -9,7 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { IntroComponent, LoginDialog, SignupDialog } from './content/intro/intro.component';
+import { IntroComponent } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
 import { BooksListComponent } from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
@@ -19,8 +18,6 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { RegisterComponent } from './authorization/register/register.component';
-import { LoginComponent } from './authorization/login/login.component';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 import { ValidateService } from './core/services/validate.service';
 import { AuthService } from './core/services/auth.service';
@@ -28,7 +25,9 @@ import { HttpModule } from '@angular/http';
 import { FavouriteService } from './core/services/favourite.service';
 import { SearchService } from './core/services/search.service';
 import { BooksService } from './core/services/books.service';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginDialogComponent } from './authorization/login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from './authorization/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     NotFoundComponent,
     BooksListComponent,
     ShowBookComponent,
-    RegisterComponent,
-    LoginComponent,
-    LoginDialog,
-    SignupDialog
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,

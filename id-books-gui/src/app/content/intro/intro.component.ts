@@ -1,20 +1,11 @@
-import { Component, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {ValidateService} from '../../core/services/validate.service';
-
-export interface DialogData {
-  email: string;
-  password: string;
-}
-
-export interface DialogDataSignUp {
-  name: string;
-  email: string;
-  password: string;
-}
+import { ValidateService } from '../../core/services/validate.service';
+import { LoginDialogComponent } from '../../authorization/login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from '../../authorization/register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-intro',
@@ -40,9 +31,9 @@ export class IntroComponent {
     ) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(LoginDialog, {
+    const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '350px',
-      height: '280px',
+      height: '260px',
       data: {email: this.email, password: this.password},
       panelClass: 'custom-modalbox'
     });
@@ -58,9 +49,9 @@ export class IntroComponent {
   }
 
   openDialogSignUp(): void {
-    const dialogRef = this.dialog.open(SignupDialog, {
+    const dialogRef = this.dialog.open(RegisterDialogComponent, {
       width: '350px',
-      height: '350px',
+      height: '320px',
       data: {name: this.name, email: this.email, password: this.password},
       panelClass: 'custom-modalbox'
     });
@@ -136,42 +127,6 @@ export class IntroComponent {
       }
     });
     return true;
-  }
-
-}
-
-@Component({
-  selector: 'login-dialog',
-  templateUrl: 'login-dialog.html',
-})
-export class LoginDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<LoginDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
-
-@Component({
-  selector: 'signup-dialog',
-  templateUrl: 'signup-dialog.html',
-})
-export class SignupDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<SignupDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataSignUp
-
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 
 }

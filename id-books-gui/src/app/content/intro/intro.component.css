@@ -1,9 +1,3 @@
-@font-face {
-  font-family: 'hauntedEyes';
-  src: url('../../../assets/fonts/hauntedEyes.otf'),
-  url('../../../assets/fonts/hauntedEyes.ttf') format('truetype');
-}
-
 .intro {
   text-align: center;
   height: 100%;

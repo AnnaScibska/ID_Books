@@ -1,0 +1,48 @@
+::ng-deep.mat-dialog-container {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .8);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color:rgba(255, 255, 255, 0.6);
+  filer: blur(20px);
+}
+
+::ng-deep.mat-dialog-container h1 {
+  text-align: center;
+  font-weight: 600;
+}
+
+::ng-deep.mat-dialog-container button {
+  font-weight: 600;
+}
+
+::ng-deep.mat-dialog-container div.modal {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+::ng-deep.mat-dialog-container form {
+  vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+::ng-deep.mat-dialog-container h1 {
+  font-family: 'hauntedEyes', Arial, serif;
+  font-size: 3em;
+}
+
+::ng-deep.mat-dialog-container mat-form-field {
+  width: 250px;
+}
+
+::ng-deep.mat-dialog-container div.mat-dialog-actions {
+  justify-content: center;
+}
+
+.hidden {
+  visibility: hidden;
+}

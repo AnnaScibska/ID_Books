@@ -4,6 +4,9 @@ import { BooksService } from '../../../core/services/books.service';
 import { PageEvent } from '@angular/material/paginator';
 import { SearchService } from '../../../core/services/search.service';
 import { FavouriteService } from '../../../core/services/favourite.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsBookComponent } from '../details-book/details-book.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-books-list',
@@ -20,10 +23,12 @@ export class BooksListComponent implements OnInit {
   json = JSON;
   booksList: Book[] = [];
   searchString = '';
+
   constructor(
     private booksService: BooksService,
     private searchService: SearchService,
-    private favouriteService: FavouriteService
+    private favouriteService: FavouriteService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -55,5 +60,40 @@ export class BooksListComponent implements OnInit {
       this.books = result['data'];
       return this.books;
     });
+  }
+
+  openDialog(book: Book[]): void {
+    const dialogRef = this.dialog.open(DetailsDialComponent);
+
+    console.log('ok hhhhhhhhhhhhhhheeeeeeeeeeeeereeeeeeeeee');
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+}
+
+@Component({
+  selector: 'details-dial',
+  templateUrl: 'details-dial.html',
+})
+export class DetailsDialComponent {
+  book;
+  books: Book[];
+  booksList: Book[] = [];
+  constructor(
+    private searchService: SearchService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    // let isbn = this.route.snapshot.params['isbn'];
+    // this.searchService.SearchByISBN(isbn).subscribe((data) => {
+    //   console.log(data.items);
+    //   this.book = data.items[0];
+    // });
   }
 }

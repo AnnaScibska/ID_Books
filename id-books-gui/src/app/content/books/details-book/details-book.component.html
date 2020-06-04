@@ -1,0 +1,17 @@
+<p>details-book works!!!!!</p>
+<div class="details-book" *ngIf="book">
+  <mat-card>
+    <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" />
+    <mat-card-header>
+      <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
+      <mat-card-title>{{ book.volumeInfo.authors }} </mat-card-title>
+      <mat-card-title>{{ book.volumeInfo.averageRating }} </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>{{ book.volumeInfo.description }}</mat-card-content>
+    <mat-card-subtitle>{{ book.volumeInfo.publisher }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ book.volumeInfo.categories }}</mat-card-subtitle>
+
+    <button mat-raised-button [routerLink]="['/books']">Go back</button>
+  </mat-card>
+</div>

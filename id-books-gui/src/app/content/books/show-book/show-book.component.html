@@ -1,34 +1,21 @@
-<div class="book" *ngFor="let book of favouriteBooks">
-  <h1 class="title">
-    {{ book["title"] }}
-  </h1>
-
-  <p class="categories">Catégorie: {{ book["categories"] }}</p>
-  <p class="authors">Аuteur : {{ book["authors"] }}</p>
-
-  <button
-    mat-raised-button
-    class="button-favourite"
-    (click)="deleteFromFavourite(book)"
-  >
-    Supprimer des favoris
-  </button>
-  <br />
-  <br />
-  <br />
-  <br />
+<div>
+  <p>favorite works</p>
 </div>
-<!--
-<mat-card class="example-card" *ngIf="book">
-  <mat-card-header>
-    <mat-card-title>{{ book.last_name }}</mat-card-title>
-    <mat-card-subtitle>{{ book.first_name }}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="{{ book.avatar }}" alt="{{ book.last_name }}" />
-  <mat-card-content>
-    <p>
-      {{ book.email }}
-    </p>
-  </mat-card-content>
-  <button mat-raised-button [routerLink]="['/books']">Go back</button>
-</mat-card> -->
+
+<div class="book-favourite" *ngFor="let book of favouriteBooks">
+  <mat-card class="favourite-card">
+    <mat-card-header>
+      <mat-card-title>{{ book["title"] }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-subtitle> Аuteur : {{ book["authors"] }}</mat-card-subtitle>
+
+    <button
+      mat-raised-button
+      class="button-favourite"
+      (click)="deleteFromFavourite(book)"
+    >
+      Supprimer des favoris
+    </button>
+  </mat-card>
+</div>

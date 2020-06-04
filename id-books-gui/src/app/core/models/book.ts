@@ -20,4 +20,5 @@ export class Book {
   infoLink: string;
   textSnippet: string;
   previewLink: string;
+  description: string;
 }

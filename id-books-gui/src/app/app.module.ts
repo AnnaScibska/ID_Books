@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
@@ -10,12 +11,16 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
-import { BooksListComponent } from './content/books/books-list/books-list.component';
+import {
+  BooksListComponent,
+  DetailsDialComponent,
+} from './content/books/books-list/books-list.component';
 import { ShowBookComponent } from './content/books/show-book/show-book.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ValidateService } from './core/services/validate.service';
@@ -26,8 +31,13 @@ import { BooksService } from './core/services/books.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginDialogComponent } from './authorization/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './authorization/register-dialog/register-dialog.component';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
+import {
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarModule,
+} from '@angular/material/snack-bar';
 import { ErrorMessageService } from './core/services/error-message.service';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { DetailsBookComponent } from './content/books/details-book/details-book.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +48,9 @@ import { ErrorMessageService } from './core/services/error-message.service';
     BooksListComponent,
     ShowBookComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    DetailsDialComponent,
+    DetailsBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,10 +64,11 @@ import { ErrorMessageService } from './core/services/error-message.service';
     MatPaginatorModule,
     HttpClientModule,
     MatButtonModule,
+    HttpModule,
     MatInputModule,
     FormsModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [
     ValidateService,
@@ -66,10 +79,9 @@ import { ErrorMessageService } from './core/services/error-message.service';
     ErrorMessageService,
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: {duration: 7000, verticalPosition: 'top'}
-    }
+      useValue: { duration: 7000, verticalPosition: 'top' },
+    },
   ],
-  bootstrap: [AppComponent]
-
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

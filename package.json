@@ -8,7 +8,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix id-books-gui",
     "dev": "concurrently \"npm run server\" \"npm run id-books-gui\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix id-books-gui && npm run build --prefix id-books-gui"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix id-books-gui && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "nodemon": "^2.0.3"
   },
   "engines": {
-    "node": "^12.17.0",
-    "npm": "^6.14.4"
+    "node": "12.14.1",
+    "npm": "6.13.4"
   }
 }

@@ -36,7 +36,6 @@ router.post(
     //     res.send("user route")
     // }
 
-
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

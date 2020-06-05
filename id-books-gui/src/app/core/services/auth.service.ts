@@ -21,7 +21,7 @@ export class AuthService {
   {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json' );
-    return this.httpClient.post<ApiResponse>('http://localhost:5000/api/users', user, { headers })
+    return this.httpClient.post<ApiResponse>('/api/users', user, { headers })
       .pipe();
   }
 
@@ -29,7 +29,7 @@ export class AuthService {
   {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
-    return this.httpClient.post<ApiResponse>('http://localhost:5000/api/auth', user, {headers})
+    return this.httpClient.post<ApiResponse>('/api/auth', user, {headers})
       .pipe();
   }
 

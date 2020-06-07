@@ -31,11 +31,13 @@ const routes: Routes = [
   {
     path: 'favoris',
     component: ShowBookComponent,
+    canActivate: [AuthGuard],
   },
 
   {
     path: '**',
     component: NotFoundComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

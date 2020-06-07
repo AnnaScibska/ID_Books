@@ -18,6 +18,7 @@ export class FavouriteService {
         categories: book['volumeInfo']['categories'],
         authors: book['volumeInfo']['authors'],
         previewLink: book['volumeInfo']['previewLink'],
+        imageLink: book['volumeInfo']['imageLinks']['thumbnail'],
       };
       localStorage.setItem(book['id'], JSON.stringify(data));
     }

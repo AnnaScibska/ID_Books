@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../../../core/models/book';
+import { GoogleBook } from '../../../core/models/GoogleBook';
 import { BooksService } from '../../../core/services/google/books.service';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from '../../../core/services/google/search.service';

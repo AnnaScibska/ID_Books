@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../core/models/book';
-import { BooksService } from '../../../core/services/books.service';
+import { BooksService } from '../../../core/services/google/books.service';
 import { PageEvent } from '@angular/material/paginator';
-import { SearchService } from '../../../core/services/search.service';
-import { FavouriteService } from '../../../core/services/favourite.service';
+import { SearchService } from '../../../core/services/google/search.service';
+import { FavouriteService } from '../../../core/services/google/favourite.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsBookComponent } from '../details-book/details-book.component';
 import { ActivatedRoute } from '@angular/router';

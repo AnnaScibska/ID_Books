@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../core/models/book';
-import { BooksService } from '../../../core/services/books.service';
+import { BooksService } from '../../../core/services/google/books.service';
 import { ActivatedRoute } from '@angular/router';
-import { FavouriteService } from '../../../core/services/favourite.service';
+import { FavouriteService } from '../../../core/services/google/favourite.service';
 
 @Component({
   selector: 'app-show-book',

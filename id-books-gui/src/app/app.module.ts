@@ -23,11 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { ValidateService } from './core/services/validate.service';
+import { ValidateService } from './core/services/google/validate.service';
 import { AuthService } from './core/services/auth.service';
-import { FavouriteService } from './core/services/favourite.service';
-import { SearchService } from './core/services/search.service';
-import { BooksService } from './core/services/books.service';
+import { FavouriteService } from './core/services/google/favourite.service';
+import { SearchService } from './core/services/google/search.service';
+import { BooksService } from './core/services/google/books.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginDialogComponent } from './authorization/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './authorization/register-dialog/register-dialog.component';
@@ -35,7 +35,7 @@ import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
   MatSnackBarModule,
 } from '@angular/material/snack-bar';
-import { ErrorMessageService } from './core/services/error-message.service';
+import { ErrorMessageService } from './core/services/google/error-message.service';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { DetailsBookComponent } from './content/books/details-book/details-book.component';
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../core/models/book';
-import { BooksService } from '../../../core/services/books.service';
+import { BooksService } from '../../../core/services/google/books.service';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from '../../../core/services/search.service';
+import { SearchService } from '../../../core/services/google/search.service';
 @Component({
   selector: 'app-details-book',
   templateUrl: './details-book.component.html',

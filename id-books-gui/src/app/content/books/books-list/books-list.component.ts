@@ -6,7 +6,7 @@ import { SearchService } from '../../../core/services/google/search.service';
 import { FavouriteService } from '../../../core/services/google/favourite.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import {BooksApiService} from '../../../core/services/booksApi.service';
+import { BooksApiService } from '../../../core/services/booksApi.service';
 
 @Component({
   selector: 'app-books-list',
@@ -44,26 +44,30 @@ export class BooksListComponent implements OnInit {
   }
 
   search() {
-    this.searchService.search(this.searchString).subscribe((res: GoogleBook[]) => {
-      this.booksList = res['items'];
-      this.searchString = '';
-      console.log(this.booksList);
-    });
+    this.searchService
+      .search(this.searchString)
+      .subscribe((res: GoogleBook[]) => {
+        this.booksList = res['items'];
+        this.searchString = '';
+        console.log(this.booksList);
+      });
   }
 
   addToFavourite(book: GoogleBook) {
     // this.favouriteService.addToFavourite(book);
-    this.booksApiService.saveBook(book).subscribe(response => {
-      console.log(response);
+    this.booksApiService.saveBook(book).subscribe((response) => {
+      console.log('addToFavorite', response);
     });
   }
 
   updateUsersList(page: PageEvent) {
-    this.booksService.getBooks(page.pageIndex).subscribe((result: GoogleBook[]) => {
-      // TODO: fix ts-lit
-      this.books = result['data'];
-      return this.books;
-    });
+    this.booksService
+      .getBooks(page.pageIndex)
+      .subscribe((result: GoogleBook[]) => {
+        // TODO: fix ts-lit
+        this.books = result['data'];
+        return this.books;
+      });
   }
 
   openDialog(book: GoogleBook[]): void {

@@ -85,35 +85,36 @@ router.get('/:id', auth, async (req, res) => {
     }
 });
 
-
-// TODO: IS NEEDED??
-
 // @route    DELETE api/books/:id
 // @desc     Delete a book
 // @access   Private
-// router.delete('/:id', auth, async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        console.log('zzz')
 
-//         // Check for ObjectId format and post
-//         if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !post) {
-//             return res.status(404).json({ msg: 'Post not found' });
-//         }
+        const book = await Book.findById(req.params.id);
+        console.log(book)
+        
+        // Check for ObjectId format and book
+        if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !book) {
+            return res.status(404).json({ msg: 'Book not found' });
+        }
 
-//         // Check user
-//         if (post.user.toString() !== req.user.id) {
-//             return res.status(401).json({ msg: 'User not authorized' });
-//         }
+        // Check user
+        const user = await User.findById(req.user.id).select('-password');
+        if (book.user_id != user._id) {
+            return res.status(401).json({ msg: 'User not authorized' });
+        }
 
-//         await post.remove();
+        await book.remove();
 
-//         res.json({ msg: 'Post removed' });
-//     } catch (err) {
-//         console.error(err.message);
+        res.json({ msg: 'Book removed' });
+    } catch (err) {
+        console.error(err.message);
 
-//         res.status(500).send('Server Error');
-//     }
-// });
+        res.status(500).send('Server Error');
+    }
+});
 
 // // @route    PUT api/books/add/:id
 // // @desc     Like a post

@@ -29,17 +29,16 @@ router.post(
         }
 
         try {
-            // const user = await User.findById(req.user.id).select('-password');
-            // TODO: after book created -> add to user.books
-            // in user ??
-
+            const user = await User.findById(req.user.id).select('-password');
             const newBook = new Book({
                 title: req.body.title,
                 author: req.body.author,
                 isbn: req.body.isbn,
                 description: req.body.description,
                 year: req.body.year,
-                imageUrl: req.body.imageUrl
+                imageUrl: req.body.imageUrl,
+                comment: req.body.comment,
+                user_id: user._id
             });
 
             const book = await newBook.save();
@@ -57,7 +56,8 @@ router.post(
 // @access   Private
 router.get('/', auth, async (req, res) => {
     try {
-        const books = await Book.find().sort({ date: -1 });
+        const user = await User.findById(req.user.id).select('-password');
+        const books = await Book.find({ user_id: user._id }).sort({ date: -1 });
         res.json(books);
     } catch (err) {
         console.error(err.message);

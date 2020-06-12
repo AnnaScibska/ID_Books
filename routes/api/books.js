@@ -86,14 +86,11 @@ router.get('/:id', auth, async (req, res) => {
 });
 
 // @route    DELETE api/books/:id
-// @desc     Delete a book
+// @desc     Delete a book by ID
 // @access   Private
 router.delete('/:id', auth, async (req, res) => {
     try {
-        console.log('zzz')
-
         const book = await Book.findById(req.params.id);
-        console.log(book)
         
         // Check for ObjectId format and book
         if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !book) {
@@ -116,128 +113,33 @@ router.delete('/:id', auth, async (req, res) => {
     }
 });
 
-// // @route    PUT api/books/add/:id
-// // @desc     Like a post
-// // @access   Private
-// router.put('/add/:id', auth, async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
+// @route    PUT api/books/:id
+// @desc     Update book by ID
+// @access   Private
+router.put('/:id', auth, async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id);
 
-//         // Check if the post has already been liked
-//         if (post.likes.some(like => like.user.toString() === req.user.id)) {
-//             return res.status(400).json({ msg: 'Post already liked' });
-//         }
+        // Check for ObjectId format and book
+        if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !book) {
+            return res.status(404).json({ msg: 'Book not found' });
+        }
 
-//         post.likes.unshift({ user: req.user.id });
+        // Check user
+        const user = await User.findById(req.user.id).select('-password');
+        if (book.user_id != user._id) {
+            return res.status(401).json({ msg: 'User not authorized' });
+        }
 
-//         await post.save();
+        book.comment = req.body.comment;
 
-//         return res.json(post.likes);
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send('Server Error');
-//     }
-// });
+        await book.save();
 
-// // @route    PUT api/posts/unlike/:id
-// // @desc     Unlike a post
-// // @access   Private
-// router.put('/unlike/:id', auth, async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
-
-//         // Check if the post has already been liked
-//         if (!post.likes.some(like => like.user.toString() === req.user.id)) {
-//             return res.status(400).json({ msg: 'Post has not yet been liked' });
-//         }
-
-//         // remove the like
-//         post.likes = post.likes.filter(
-//             ({ user }) => user.toString() !== req.user.id
-//         );
-
-//         await post.save();
-
-//         return res.json(post.likes);
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send('Server Error');
-//     }
-// });
-
-// // @route    POST api/posts/comment/:id
-// // @desc     Comment on a post
-// // @access   Private
-// router.post(
-//     '/comment/:id',
-//     [
-//         auth,
-//         [
-//             check('text', 'Text is required')
-//                 .not()
-//                 .isEmpty()
-//         ]
-//     ],
-//     async (req, res) => {
-//         const errors = validationResult(req);
-//         if (!errors.isEmpty()) {
-//             return res.status(400).json({ errors: errors.array() });
-//         }
-
-//         try {
-//             const user = await User.findById(req.user.id).select('-password');
-//             const post = await Post.findById(req.params.id);
-
-//             const newComment = {
-//                 text: req.body.text,
-//                 name: user.name,
-//                 avatar: user.avatar,
-//                 user: req.user.id
-//             };
-
-//             post.comments.unshift(newComment);
-
-//             await post.save();
-
-//             res.json(post.comments);
-//         } catch (err) {
-//             console.error(err.message);
-//             res.status(500).send('Server Error');
-//         }
-//     }
-// );
-
-// // @route    DELETE api/posts/comment/:id/:comment_id
-// // @desc     Delete comment
-// // @access   Private
-// router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
-//     try {
-//         const post = await Post.findById(req.params.id);
-
-//         // Pull out comment
-//         const comment = post.comments.find(
-//             comment => comment.id === req.params.comment_id
-//         );
-//         // Make sure comment exists
-//         if (!comment) {
-//             return res.status(404).json({ msg: 'Comment does not exist' });
-//         }
-//         // Check user
-//         if (comment.user.toString() !== req.user.id) {
-//             return res.status(401).json({ msg: 'User not authorized' });
-//         }
-
-//         post.comments = post.comments.filter(
-//             ({ id }) => id !== req.params.comment_id
-//         );
-
-//         await post.save();
-
-//         return res.json(post.comments);
-//     } catch (err) {
-//         console.error(err.message);
-//         return res.status(500).send('Server Error');
-//     }
-// });
+        return res.json(book);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;

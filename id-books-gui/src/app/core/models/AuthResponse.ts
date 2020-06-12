@@ -1,5 +1,6 @@
-export class ApiResponse {
+export class AuthResponse {
   public token?: string;
+  public avatar?: string;
 
   // fromJSON(json) {
   //   json.forEach(propName => {

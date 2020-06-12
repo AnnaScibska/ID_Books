@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MainNavComponent implements OnInit {
 
   isNavHidden: boolean;
+  avatar = '';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -41,6 +42,10 @@ export class MainNavComponent implements OnInit {
       }
     });
     this.isNavHidden = false;
+    this.avatar = localStorage.getItem('user_avatar');
+    this.authService.avatarObservable.subscribe((data) => {
+      this.avatar = data;
+    });
   }
 
   logOut() {

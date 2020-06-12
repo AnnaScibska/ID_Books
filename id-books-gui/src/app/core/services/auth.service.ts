@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tokenNotExpired } from 'angular2-jwt';
-import { ApiResponse } from '../models/ApiResponse';
+import { AuthResponse } from '../models/AuthResponse';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ import { ApiResponse } from '../models/ApiResponse';
 export class AuthService {
   authToken: any;
   user: any;
+  avatar = '';
+
+  private avatarSubject = new Subject<string>();
+  avatarObservable = this.avatarSubject.asObservable();
 
   url = 'http://localhost:5000'
 
@@ -23,7 +28,7 @@ export class AuthService {
   {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json' );
-    return this.httpClient.post<ApiResponse>(this.url + '/api/users', user, { headers })
+    return this.httpClient.post<AuthResponse>(this.url + '/api/users', user, { headers })
       .pipe();
   }
 
@@ -31,16 +36,18 @@ export class AuthService {
   {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
-    return this.httpClient.post<ApiResponse>(this.url + '/api/auth', user, {headers})
+    return this.httpClient.post<AuthResponse>(this.url + '/api/auth', user, {headers})
       .pipe();
   }
 
   storeUserData(token, user)
   {
     localStorage.setItem('id_token', token);
-    localStorage.setItem('user', JSON.stringify(user));  // TODO: remove password
+    localStorage.setItem('user_avatar', user.avatar);
     this.authToken = token;
     this.user = user;
+    this.avatar = user.avatar;
+    this.avatarSubject.next(this.avatar);
   }
 
   loadToken()
@@ -53,6 +60,7 @@ export class AuthService {
   {
     this.authToken = null;
     this.user = null;
+    this.avatar = null;
     localStorage.clear();
   }
 }

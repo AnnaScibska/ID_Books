@@ -78,16 +78,16 @@ export class IntroComponent {
 
     const user = {
       email: this.loginData[0],
-      password: this.loginData[1]
+      password: this.loginData[1],
+      avatar: ''
     };
 
     this.authService.authenticateUser(user).subscribe({
       next: data => {
-        console.log(data.token);
         if (data.token)
         {
+          user.avatar  = data.avatar;
           this.authService.storeUserData(data.token, user);
-          console.log(user);
           this.snackBar.open('You are now logged in', 'Close');
           this.router.navigate(['/books']).then();
         }

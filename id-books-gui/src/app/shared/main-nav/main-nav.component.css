@@ -55,3 +55,7 @@ h1 {
   font-size: larger;
 
 }
+
+.avatar {
+  border-radius: 50%;
+}

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tokenNotExpired } from 'angular2-jwt';
 import { AuthResponse } from '../models/AuthResponse';
 import { Subject } from 'rxjs';
+import { environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   private avatarSubject = new Subject<string>();
   avatarObservable = this.avatarSubject.asObservable();
 
-  url = 'http://localhost:5000'
+  url = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -48,12 +49,6 @@ export class AuthService {
     this.user = user;
     this.avatar = user.avatar;
     this.avatarSubject.next(this.avatar);
-  }
-
-  loadToken()
-  {
-    const token = localStorage.getItem('id_token');
-    this.authToken = token;
   }
 
   logOut()

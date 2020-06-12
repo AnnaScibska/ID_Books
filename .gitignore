@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/client/build
 # Only exists if Bazel was run
 /bazel-out
 
@@ -47,5 +48,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-#credentials
+#credentials or sensitive data
 /config/default.json
+.env

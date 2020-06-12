@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../../../core/models/book';
-import { BooksService } from '../../../core/services/books.service';
+import { GoogleBook } from '../../../core/models/GoogleBook';
+import { BooksService } from '../../../core/services/google/books.service';
 import { ActivatedRoute } from '@angular/router';
-import { FavouriteService } from '../../../core/services/favourite.service';
+import { FavouriteService } from '../../../core/services/google/favourite.service';
 
 @Component({
   selector: 'app-show-book',
@@ -10,10 +10,20 @@ import { FavouriteService } from '../../../core/services/favourite.service';
   styleUrls: ['./show-book.component.css'],
 })
 export class ShowBookComponent implements OnInit {
-  book: Book;
+  book: GoogleBook;
   bookId: number;
   ///////
-  favouriteBooks: Book[] = [];
+  favouriteBooks: GoogleBook[] = [];
+
+  books: GoogleBook[];
+  pageNumber = 0;
+  per_page: number;
+  total: number;
+
+  LocalStorage = localStorage;
+  json = JSON;
+  booksList: GoogleBook[] = [];
+  searchString = '';
 
   constructor(
     private userService: BooksService,
@@ -25,7 +35,7 @@ export class ShowBookComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.bookId = Number(params.get('bookId'));
     });
-    this.userService.getBook(this.bookId).subscribe((result: Book) => {
+    this.userService.getBook(this.bookId).subscribe((result: GoogleBook) => {
       // TODO: fix ts-lint
       this.book = result['data'];
     });

@@ -2,8 +2,8 @@
   text-align: center;
   height: 100%;
   background-size: cover;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -17,6 +17,7 @@ h1 {
   padding-top: 2.5em;
   font-size: 100px;
   font-family: 'hauntedEyes', Arial, serif;
+  color: black;
 }
 
 @media screen and (max-width: 1024px) {
@@ -28,13 +29,15 @@ h1 {
 p {
   font-family: 'Carrois Gothic SC', Helvetica, Arial, sans-serif;
   font-size: 1.2em;
-  letter-spacing:2px;
+  letter-spacing: 2px;
   padding-top: 3em;
+  color: black;
 }
 
 button {
   margin: 1em;
   font-weight: 600;
+  color: black;
 }
 
 ::ng-deep.mat-dialog-container {
@@ -43,7 +46,7 @@ button {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  background-color:rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   filer: blur(20px);
 }
 
@@ -77,4 +80,3 @@ button {
 .hidden {
   visibility: hidden;
 }
-

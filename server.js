@@ -1,18 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
 // const path = require('path');
+const cors = require('cors');
 
 const app = express();
 
-// TODO: REMOVE
-app.get('/', (req, res) => res.send('API Running'))
-
-// END OF REMOVE
-
-
-
 // Connect Database
 connectDB();
+
+// CORS Middleware
+app.use(cors());
 
 // Init Middleware
 // app.use(express.json());

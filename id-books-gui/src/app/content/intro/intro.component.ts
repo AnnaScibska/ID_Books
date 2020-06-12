@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
-import { ValidateService } from '../../core/services/validate.service';
+import { ValidateService } from '../../core/services/google/validate.service';
 import { LoginDialogComponent } from '../../authorization/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from '../../authorization/register-dialog/register-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ErrorMessageService } from '../../core/services/error-message.service';
+import { ErrorMessageService } from '../../core/services/google/error-message.service';
 
 @Component({
   selector: 'app-intro',

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Book } from '../../core/models/book';
+import { GoogleBook } from '../../models/GoogleBook';
 
 @Injectable()
 export class FavouriteService {
-  favouriteBooks: Book[] = [];
+  favouriteBooks: GoogleBook[] = [];
 
   constructor() {}
 
-  addToFavourite(book: Book[]) {
+  addToFavourite(book: GoogleBook[]) {
     if (localStorage.getItem(book['id'])) {
       localStorage.removeItem(book['id']);
     } else {
@@ -18,12 +18,13 @@ export class FavouriteService {
         categories: book['volumeInfo']['categories'],
         authors: book['volumeInfo']['authors'],
         previewLink: book['volumeInfo']['previewLink'],
+        imageLink: book['volumeInfo']['imageLinks']['thumbnail'],
       };
       localStorage.setItem(book['id'], JSON.stringify(data));
     }
   }
 
-  deleteFromFavourite(book: Book[]) {
+  deleteFromFavourite(book: GoogleBook[]) {
     localStorage.removeItem(book['id']);
     this.favouriteBooks = [];
     for (let i = 0; i < localStorage.length; i++) {

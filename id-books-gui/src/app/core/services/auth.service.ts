@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tokenNotExpired } from 'angular2-jwt';
-import {ApiResponse} from '../models/ApiResponse';
+import { ApiResponse } from '../models/ApiResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import {ApiResponse} from '../models/ApiResponse';
 export class AuthService {
   authToken: any;
   user: any;
+
+  url = 'http://localhost:5000'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,7 +23,7 @@ export class AuthService {
   {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json' );
-    return this.httpClient.post<ApiResponse>('/api/users', user, { headers })
+    return this.httpClient.post<ApiResponse>(this.url + '/api/users', user, { headers })
       .pipe();
   }
 
@@ -29,7 +31,7 @@ export class AuthService {
   {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
-    return this.httpClient.post<ApiResponse>('/api/auth', user, {headers})
+    return this.httpClient.post<ApiResponse>(this.url + '/api/auth', user, {headers})
       .pipe();
   }
 

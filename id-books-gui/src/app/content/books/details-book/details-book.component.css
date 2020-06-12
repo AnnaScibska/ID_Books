@@ -7,8 +7,3 @@
 mat-card {
   margin: 15px auto;
 }
-
-mat-card-content {
-  width: 150px;
-  margin: 15px 5px 5px 5px;
-}

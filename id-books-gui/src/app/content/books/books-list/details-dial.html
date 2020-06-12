@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Book details</h2>
+<mat-dialog-content>
+  <p>
+    An app's components typically define many views, arranged hierarchically.
+    Angular provides
+  </p>
+
+  <div class="book_details" *ngIf="let bookItem of booksList">
+    <p>title : {{bookItem["volumeInfo"]["title"] }}</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

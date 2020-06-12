@@ -11,7 +11,7 @@
     <!--TODO: VIDEO [ngClass]="{hidden: !(isHandset$ | async)?.matches}"-->
     <mat-toolbar [ngClass]="isNavHidden ? 'hidden' : ''">Menu</mat-toolbar>
     <mat-nav-list>
-<!--      <a mat-list-item [routerLink]="['/']">Log out</a>-->
+      <!--      <a mat-list-item [routerLink]="['/']">Log out</a>-->
       <!--      <a mat-list-item [routerLink]="['/admin']">admin</a>-->
       <a mat-list-item [routerLink]="['/books']">Books list</a>
       <!--      <a mat-list-item [routerLink]="['/badges']">badges</a>-->
@@ -31,9 +31,13 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async"
       >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon class="menu" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>LOGO HERE</span>
+      <img
+        class="logo"
+        src="https://media.giphy.com/media/xT8qBt3pdiCZrk3erS/giphy.gif"
+      />
+      <h1 class="id_books">ID Books</h1>
       <span class="spacer"></span>
       <!--<span *ngIf="!isHandset$ | async"> -->
       <!-- TODO: hide menu if small screen-->
@@ -41,6 +45,7 @@
       <!--      <a [routerLink]="['/admin']">admin</a>-->
       <a [routerLink]="['/books']">Books list</a>
       <!--      <a [routerLink]="['/badges']">badges</a>-->
+      <a mat-list-item [routerLink]="['/favoris']">Favourite list</a>
       <a mat-list-item (click)="logOut()">Log out</a>
       <!--</span>-->
     </mat-toolbar>

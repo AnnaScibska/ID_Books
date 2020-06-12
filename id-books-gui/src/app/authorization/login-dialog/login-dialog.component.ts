@@ -5,18 +5,15 @@ import { DialogDataLogIn } from '../../core/models/DialogDataLogIn';
 @Component({
   selector: 'app-login-dialog',
   templateUrl: './login-dialog.component.html',
-  styleUrls: ['../login-register.css']
+  styleUrls: ['../login-register.css'],
 })
 export class LoginDialogComponent {
-
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogDataLogIn
-
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

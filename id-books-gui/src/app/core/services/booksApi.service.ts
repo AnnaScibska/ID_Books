@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApiBook } from '../models/ApiBook';
 import { GoogleBook } from '../models/GoogleBook';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class BooksApiService {
   authToken: any;
   book: ApiBook;
 
-  url = 'http://localhost:5000';
+  url = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) {}
 

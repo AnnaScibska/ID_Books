@@ -15,8 +15,8 @@ import { BooksApiService } from '../../../core/services/booksApi.service';
 })
 export class BooksListComponent implements OnInit {
   books: GoogleBook[];
-  pageNumber = 0;
-  per_page: number;
+  index = 0;
+  perPage: 10;
   total: number;
 
   LocalStorage = localStorage;
@@ -24,6 +24,7 @@ export class BooksListComponent implements OnInit {
   booksList: GoogleBook[] = [];
   searchString = '';
   note: string = '';
+  currentSearch = '';
 
   constructor(
     private booksService: BooksService,
@@ -33,16 +34,7 @@ export class BooksListComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    // this.booksService.getBooks(this.pageNumber).subscribe((result: GoogleBook[]) => {
-    //   // TODO: fix ts-lit
-    //   this.books = result['data'];
-    //   this.per_page = result['per_page'];
-    //   this.total = result['total'];
-    //   //
-    //   this.search();
-    // });
-  }
+  ngOnInit(): void {}
 
   setValue() {
     this.note = '';
@@ -50,12 +42,16 @@ export class BooksListComponent implements OnInit {
 
   search() {
     this.searchService
-      .search(this.searchString)
+      .search(this.searchString, 0)
       .subscribe((res: GoogleBook[]) => {
         this.booksList = res['items'];
+        this.currentSearch = this.searchString;
         this.searchString = '';
         this.note = '';
         console.log('fromBookList', this.booksList);
+        console.log(this.booksList);
+        // console.log(res);
+        this.total = res['totalItems'];
       });
   }
 
@@ -67,13 +63,11 @@ export class BooksListComponent implements OnInit {
     });
   }
 
-  updateUsersList(page: PageEvent) {
-    this.booksService
-      .getBooks(page.pageIndex)
-      .subscribe((result: GoogleBook[]) => {
-        // TODO: fix ts-lit
-        this.books = result['data'];
-        return this.books;
+  updateBooksList(page: PageEvent) {
+    this.searchService
+      .search(this.currentSearch, page.pageIndex)
+      .subscribe((res: GoogleBook[]) => {
+        this.booksList = res['items'];
       });
   }
 

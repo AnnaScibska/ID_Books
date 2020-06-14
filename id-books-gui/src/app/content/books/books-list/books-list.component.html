@@ -17,6 +17,7 @@
 </div>
 <!-- <button mat-raised-button routerLink="/favoris">mes favoris</button> -->
 <hr />
+
 <!-- <app-show-book></app-show-book> -->
 <div class="book" *ngFor="let bookItem of booksList">
   <mat-card class="example-card">
@@ -40,9 +41,15 @@
 
       <span class="spacer"></span>
     </mat-card-header>
+    <mat-form-field appearance="fill" class="form-notes">
+      <mat-label>vos notes personnelles</mat-label>
+      <textarea name="notes" id="note" matInput [(ngModel)]="note"></textarea>
+    </mat-form-field>
+
     <button
       mat-raised-button
       class="button-favourite"
+      (click)="setValue()"
       (click)="addToFavourite(bookItem)"
     >
       <i

@@ -27,6 +27,8 @@ export class ShowBookComponent implements OnInit {
   json = JSON;
   booksList: GoogleBook[] = [];
   searchString = '';
+  essai: ApiBook[] = [];
+  note = '';
 
   constructor(
     private userService: BooksService,
@@ -41,8 +43,25 @@ export class ShowBookComponent implements OnInit {
 
   ngOnInit() {
     this.apiBookService.getBooks().subscribe((response) => {
+      //this.apiBookService.adaptApiBookFromGoogleBook(book: GoogleBook);
       console.log('getbooks', response);
+      this.essai = response;
     });
+
+    // function notePerso() {
+    //   let note = document.getElementById('note').value;
+    //   alert(note);
+    // }
+
+    // ngOnInit() {
+    //   this.apiBookService.getBooks().subscribe((res: ApiBook[]) => {
+    //     //this.apiBookService.adaptApiBookFromGoogleBook(book: GoogleBook);
+    //     console.log('getbooks', res);
+    //     this.essai = res['apiBook'];
+    //     console.log('this.essai', this.essai);
+    //     return this.essai;
+    //   });
+
     // this.activatedRoute.paramMap.subscribe((params) => {
     //   this.bookId = Number(params.get('bookId'));
     // });
@@ -59,8 +78,16 @@ export class ShowBookComponent implements OnInit {
     //   }
   }
 
+  delete() {
+    //   this.apiBookService.deleteBook(book).subscribe((response) => {
+    //     this.apiBookService.adaptApiBookFromGoogleBook(book);
+    //     console.log('getbooks', response);
+    //     this.essai = response;
+    //   });
+  }
+
   deleteFromFavourite(book) {
-    this.favouriteService.deleteFromFavourite(book);
-    this.favouriteBooks = this.favouriteService.getFavouriteBooks();
+    //   this.favouriteService.deleteFromFavourite(book);
+    //   this.favouriteBooks = this.favouriteService.getFavouriteBooks();
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GoogleBook } from '../../models/GoogleBook';
+import { ApiBook } from '../../models/ApiBook';
 
 @Injectable()
 export class FavouriteService {

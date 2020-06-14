@@ -23,6 +23,7 @@ export class BooksListComponent implements OnInit {
   json = JSON;
   booksList: GoogleBook[] = [];
   searchString = '';
+  note: string = '';
 
   constructor(
     private booksService: BooksService,
@@ -43,19 +44,25 @@ export class BooksListComponent implements OnInit {
     // });
   }
 
+  setValue() {
+    this.note = '';
+  }
+
   search() {
     this.searchService
       .search(this.searchString)
       .subscribe((res: GoogleBook[]) => {
         this.booksList = res['items'];
         this.searchString = '';
-        console.log(this.booksList);
+        this.note = '';
+        console.log('fromBookList', this.booksList);
       });
   }
 
   addToFavourite(book: GoogleBook) {
     // this.favouriteService.addToFavourite(book);
     this.booksApiService.saveBook(book).subscribe((response) => {
+      this.setValue();
       console.log('addToFavorite', response);
     });
   }

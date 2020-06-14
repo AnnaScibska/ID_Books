@@ -1,23 +1,51 @@
-<div>
-  <p>favorite works</p>
-</div>
-
-<div class="book-favourite" *ngFor="let book of favouriteBooks">
+<div class="book-favourite" *ngFor="let b of essai">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ book["title"] }}</mat-card-title>
-    </mat-card-header>
     <mat-card-content>
-      <img mat-card-image src="{{ book['imageLink'] }}" alt="book picture" />
-    </mat-card-content>
-    <mat-card-subtitle> Аuteur : {{ book["authors"] }}</mat-card-subtitle>
+      <mat-card-header>
+        <mat-card-title>{{ b.title | json }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{ b.imageUrl }}" alt="book picture" />
+      <mat-card-subtitle> Аuteur : {{ b.author }}</mat-card-subtitle>
 
-    <button
-      mat-raised-button
-      class="button-favourite"
-      (click)="deleteFromFavourite(book)"
-    >
-      Supprimer des favoris
-    </button>
+      <mat-card-content>Mes notes : {{ b.comment }}</mat-card-content>
+    </mat-card-content>
+
+    <mat-form-field appearance="fill" class="form-notes">
+      <mat-label>vos notes personnelles</mat-label>
+      <textarea
+        name="notes"
+        id="note"
+        ng-model="note"
+        ng-model-options="{ getterSetter: true }"
+        matInput
+      ></textarea>
+    </mat-form-field>
+    <mat-card-actions>
+      <!-- <button
+        mat-raised-button
+        class="button-favourite"
+        (click)="deleteFromFavourite(book)"
+      >
+        Supprimer des favoris
+      </button> -->
+      <button mat-raised-button class="button-favourite" (click)="delete()">
+        Supprimer des favoris
+      </button>
+
+      <button
+        mat-raised-button
+        class="button-favourite"
+        (click)="deleteFromFavourite(book)"
+      >
+        Ajouter un commentaire
+      </button>
+      <button
+        mat-raised-button
+        class="button-favourite"
+        (click)="deleteFromFavourite(book)"
+      >
+        Modifier un commentaire
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>

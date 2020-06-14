@@ -22,13 +22,13 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
 import { ValidateService } from './core/services/google/validate.service';
 import { AuthService } from './core/services/auth.service';
 import { FavouriteService } from './core/services/google/favourite.service';
 import { SearchService } from './core/services/google/search.service';
 import { BooksService } from './core/services/google/books.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 import { LoginDialogComponent } from './authorization/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './authorization/register-dialog/register-dialog.component';
 import {

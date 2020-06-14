@@ -9,13 +9,14 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'intro',
-    component: IntroComponent,
+    path: '',
+    redirectTo: 'favoris',
+    pathMatch: 'full',
   },
   {
-    path: '',
-    redirectTo: 'intro',
-    pathMatch: 'full',
+    path: 'favoris',
+    component: ShowBookComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'books',
@@ -24,13 +25,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'books/:isbn',
-    component: DetailsBookComponent,
-    canActivate: [AuthGuard],
+    path: 'intro',
+    component: IntroComponent,
   },
   {
-    path: 'favoris',
-    component: ShowBookComponent,
+    path: 'books/:isbn',
+    component: DetailsBookComponent,
     canActivate: [AuthGuard],
   },
 

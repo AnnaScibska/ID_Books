@@ -37,7 +37,7 @@
       <a [routerLink]="['/books']">Books search</a>
       <a mat-list-item [routerLink]="['/favoris']">Favourite list</a>
       <a mat-list-item (click)="logOut()">Log out</a>
-      <img src="{{avatar}}" width="40" height="40" class="avatar">
+      <img src="{{ avatar }}" width="40" height="40" class="avatar" />
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

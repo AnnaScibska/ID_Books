@@ -1,5 +1,5 @@
-.example-card {
-  max-width: 250px;
+.book-favourite {
+
   padding: 20px;
   text-align: center;
 }
@@ -9,6 +9,15 @@ mat-card {
 }
 
 mat-card-content {
-  width: 150px;
+
   margin: 15px 5px 5px 5px;
+}
+
+img {
+  max-width: 250px;
+  max-height: 350px;
+}
+
+.form-notes {
+  width: 100%;
 }

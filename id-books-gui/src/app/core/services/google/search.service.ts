@@ -4,21 +4,15 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 @Injectable()
 export class SearchService {
-  constructor(private httpC: HttpClient, private http: Http) {}
+  constructor(private httpClient: HttpClient, private http: Http) {}
 
-  search(search: string) {
-    return this.httpC.get(
-      'https://www.googleapis.com/books/v1/volumes?q=' + search
+  search(search: string, index: number) {
+    index *= 10;
+    index++;
+    return this.httpClient.get(
+      `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=10&startIndex=${index}`
     );
-
-    console.log();
   }
-
-  // searchById(id: string) {
-  //   return this.http.get('https://www.googleapis.com/books/v1/volumes?q=id');
-
-  //   console.log();
-  // }
 
   SearchByISBN(isbn) {
     var encodedURI = encodeURI(

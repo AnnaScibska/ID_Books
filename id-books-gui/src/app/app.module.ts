@@ -11,10 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { IntroComponent } from './content/intro/intro.component';
 import { NotFoundComponent } from './content/not-found/not-found.component';
-import {
-  BooksListComponent,
-  DetailsDialComponent,
-} from './content/books/books-list/books-list.component';
+import { BooksListComponent } from './content/books/books-list/books-list.component';
 import { FavouriteComponent } from './content/books/show-book/favourite.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -22,21 +19,15 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { MatButtonModule } from '@angular/material/button';
-import { ValidateService } from './core/services/google/validate.service';
+import { ValidateService } from './core/services/validate.service';
 import { AuthService } from './core/services/auth.service';
-import { FavouriteService } from './core/services/google/favourite.service';
-import { SearchService } from './core/services/google/search.service';
-import { BooksService } from './core/services/google/books.service';
+import { GoogleSearchService } from './core/services/googleSearch.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { LoginDialogComponent } from './authorization/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from './authorization/register-dialog/register-dialog.component';
-import {
-  MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MatSnackBarModule,
-} from '@angular/material/snack-bar';
-import { ErrorMessageService } from './core/services/google/error-message.service';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ErrorMessageService } from './core/services/error-message.service';
 import { DetailsBookComponent } from './content/books/details-book/details-book.component';
 
 @NgModule({
@@ -49,7 +40,6 @@ import { DetailsBookComponent } from './content/books/details-book/details-book.
     FavouriteComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
-    DetailsDialComponent,
     DetailsBookComponent,
   ],
   imports: [
@@ -73,9 +63,7 @@ import { DetailsBookComponent } from './content/books/details-book/details-book.
   providers: [
     ValidateService,
     AuthService,
-    FavouriteService,
-    SearchService,
-    BooksService,
+    GoogleSearchService,
     ErrorMessageService,
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,

@@ -12,7 +12,6 @@ export class ErrorMessageService {
     const errorList = error.error.errors;
     let errorMsg = '';
     errorList.forEach( errorRsp => {
-      console.log(errorRsp.msg);
       errorMsg += errorRsp.msg + '. ';
     });
     this.snackBar.open(errorMsg, 'Close');

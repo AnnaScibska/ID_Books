@@ -10,15 +10,13 @@
   </mat-form-field>
 
   <button class="search-icon" mat-raised-button (click)="search()">
-    <mat-icon aria-hidden="false" aria-label="Example home icon"
-      >search</mat-icon
-    >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">
+      search
+    </mat-icon>
   </button>
 </div>
-<!-- <button mat-raised-button routerLink="/favourite">mes favourite</button> -->
 <hr />
 
-<!-- <app-show-book></app-show-book> -->
 <div class="book" *ngFor="let bookItem of booksList">
   <mat-card class="example-card">
     <mat-card-header>
@@ -35,37 +33,17 @@
         />
       </div>
       <mat-card-title>{{ bookItem["volumeInfo"]["title"] }}</mat-card-title>
-      <mat-card-subtitle>{{
-        bookItem["volumeInfo"]["authors"]
-      }}</mat-card-subtitle>
-
+      <mat-card-subtitle>{{ bookItem["volumeInfo"]["authors"] }}</mat-card-subtitle>
       <span class="spacer"></span>
     </mat-card-header>
 
-    <button
-      mat-raised-button
-      class="button-favourite"
-      (click)="setValue()"
-      (click)="addToFavourite(bookItem)"
-    >
-      <i
-        class="fa fa-star"
-        [ngClass]="{
-          'in-favourite': json.parse(LocalStorage.getItem(bookItem['id']))
-        }"
-      ></i>
+    <button mat-raised-button class="button-favourite" (click)="addToFavourite(bookItem)">
       Add to favourite
     </button>
-    <!-- <button mat-raised-button [routerLink]="['/books', bookItem['id']]">
-      see details
-    </button> -->
 
     <button
       mat-raised-button
-      [routerLink]="[
-        '/books',
-        bookItem['volumeInfo']['industryIdentifiers'][0]['identifier']
-      ]"
+      [routerLink]="['/books', bookItem['volumeInfo']['industryIdentifiers'][0]['identifier']]"
     >
       see details
     </button>

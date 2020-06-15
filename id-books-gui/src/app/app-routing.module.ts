@@ -21,7 +21,6 @@ const routes: Routes = [
   {
     path: 'books',
     component: BooksListComponent,
-
     canActivate: [AuthGuard],
   },
   {
@@ -33,7 +32,6 @@ const routes: Routes = [
     component: DetailsBookComponent,
     canActivate: [AuthGuard],
   },
-
   {
     path: '**',
     component: NotFoundComponent,

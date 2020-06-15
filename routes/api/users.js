@@ -26,16 +26,6 @@ router.post(
         ).isLength({ min: 8 })
     ],
 
-    // // async
-    // (req, res) => {
-    //     console.log(req.body);
-    //     const errors = validationResult(req);
-    //     if (!errors.isEmpty()) {
-    //         return res.status(400).json({ errors: errors.array() });
-    //     }
-    //     res.send("user route")
-    // }
-
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -84,7 +74,7 @@ router.post(
             jwt.sign(
                 payload,
                 process.env.JWT_SECRET,
-                { expiresIn: 360000 }, // TODO: CHANGE WHEN DEPLOY TO 3600: 1h
+                { expiresIn: 3600 },
                 (err, token) => {
                     if (err) throw err;
                     res.json({ token });

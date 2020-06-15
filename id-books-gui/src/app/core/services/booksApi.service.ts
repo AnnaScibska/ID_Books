@@ -49,8 +49,6 @@ export class BooksApiService {
     this.books = this.httpClient
       .get<any>(this.url + '/api/books', httpOptions)
       .pipe();
-    console.log('get bookSSSS', this.books);
-
     return this.books;
   }
 
@@ -63,8 +61,6 @@ export class BooksApiService {
     this.books = this.httpClient
       .put<any>(this.url + `/api/books/${bookId}`, { comment }, httpOptions)
       .pipe();
-    console.log('book update', this.books);
-
     return this.books;
   }
 

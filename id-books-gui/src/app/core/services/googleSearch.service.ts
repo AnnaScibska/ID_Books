@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Response } from '@angular/http';
 
 @Injectable()
-export class SearchService {
-  constructor(private httpClient: HttpClient, private http: Http) {}
+export class GoogleSearchService {
+  constructor(private httpClient: HttpClient) {}
 
   search(search: string, index: number) {
     index *= 10;

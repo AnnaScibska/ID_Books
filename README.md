@@ -1,5 +1,7 @@
 # ID Books
 
+![alt text](http://www.anulla.eu/id_books/INTRO.JPG)
+
 ## INSTALLATION PROCEDURE:
 
 To run locally for development purpose:

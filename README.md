@@ -17,7 +17,7 @@ To run locally for development purpose:
 
 3. In the root folder
     - Create `.env` file. Use `.env.example` as the example
-        - Replace connection string with you DB account
+        - Replace connection string with one from you DB account
         - Create a JWT secret
 
 	- Run the installation script:

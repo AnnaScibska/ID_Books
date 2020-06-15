@@ -1,4 +1,4 @@
-# ID_Books
+# ID Books
 
 ## INSTALLATION PROCEDURE:
 
@@ -92,4 +92,4 @@ To run locally for development purpose:
     
   The application is deployed and accessible from everywhere
 
-
+  Check example application on: https://frozen-cliffs-10385.herokuapp.com/

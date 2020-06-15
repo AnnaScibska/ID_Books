@@ -7,6 +7,7 @@ import { FavouriteService } from '../../../core/services/google/favourite.servic
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { BooksApiService } from '../../../core/services/booksApi.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-books-list',
@@ -23,7 +24,7 @@ export class BooksListComponent implements OnInit {
   json = JSON;
   booksList: GoogleBook[] = [];
   searchString = '';
-  note: string = '';
+  note = '';
   currentSearch = '';
 
   constructor(
@@ -31,6 +32,7 @@ export class BooksListComponent implements OnInit {
     private searchService: SearchService,
     private favouriteService: FavouriteService,
     private booksApiService: BooksApiService,
+    private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {}
 
@@ -59,7 +61,7 @@ export class BooksListComponent implements OnInit {
     // this.favouriteService.addToFavourite(book);
     this.booksApiService.saveBook(book).subscribe((response) => {
       this.setValue();
-      console.log('addToFavorite', response);
+      this.snackBar.open('Book added to favourites', 'Close');
     });
   }
 

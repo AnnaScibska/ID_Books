@@ -5,7 +5,7 @@
       type="text"
       [(ngModel)]="searchString"
       class="search"
-      placeholder="recherche sur google books"
+      placeholder="Search a book..."
     />
   </mat-form-field>
 
@@ -15,7 +15,7 @@
     >
   </button>
 </div>
-<!-- <button mat-raised-button routerLink="/favoris">mes favoris</button> -->
+<!-- <button mat-raised-button routerLink="/favourite">mes favourite</button> -->
 <hr />
 
 <!-- <app-show-book></app-show-book> -->
@@ -41,10 +41,6 @@
 
       <span class="spacer"></span>
     </mat-card-header>
-    <mat-form-field appearance="fill" class="form-notes">
-      <mat-label>vos notes personnelles</mat-label>
-      <textarea name="notes" id="note" matInput [(ngModel)]="note"></textarea>
-    </mat-form-field>
 
     <button
       mat-raised-button
@@ -58,7 +54,7 @@
           'in-favourite': json.parse(LocalStorage.getItem(bookItem['id']))
         }"
       ></i>
-      Ajouter aux favoris
+      Add to favourite
     </button>
     <!-- <button mat-raised-button [routerLink]="['/books', bookItem['id']]">
       see details
@@ -72,10 +68,6 @@
       ]"
     >
       see details
-    </button>
-
-    <button mat-raised-button (click)="openDialog(bookItem)">
-      Open dialog
     </button>
   </mat-card>
 </div>

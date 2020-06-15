@@ -28,16 +28,14 @@ export class BooksApiService {
       .pipe();
   }
 
-  deleteBook(id) {
-    // const apiBook = this.adaptApiBookFromGoogleBook(book);
-
+  deleteBook(id: string) {
     let headers = new HttpHeaders();
     this.loadToken();
     headers = headers.append('x-auth-token', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
     const httpOptions = { headers };
     return this.httpClient
-      .delete<any>(this.url + '/api/books/:id', httpOptions)
+      .delete<any>(this.url + `/api/books/${id}`, httpOptions)
       .pipe();
   }
 
@@ -55,31 +53,15 @@ export class BooksApiService {
 
     return this.books;
   }
-  //ajouter par moi
-  getBookId(id) {
+
+  updateBook(bookId: string, comment: string) {
     let headers = new HttpHeaders();
     this.loadToken();
     headers = headers.append('x-auth-token', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
     const httpOptions = { headers };
-
     this.books = this.httpClient
-      .get<any>(this.url + '/api/books/:id', httpOptions)
-      .pipe();
-    console.log('book id', this.books);
-
-    return this.books;
-  }
-
-  updateBook(apiBook) {
-    let headers = new HttpHeaders();
-    this.loadToken();
-    headers = headers.append('x-auth-token', this.authToken);
-    headers = headers.append('Content-Type', 'application/json');
-    const httpOptions = { headers };
-
-    this.books = this.httpClient
-      .put<any>(this.url + '/api/books/:id', apiBook, httpOptions)
+      .put<any>(this.url + `/api/books/${bookId}`, { comment }, httpOptions)
       .pipe();
     console.log('book update', this.books);
 

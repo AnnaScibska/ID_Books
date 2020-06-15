@@ -89,7 +89,7 @@ export class IntroComponent {
           user.avatar  = data.avatar;
           this.authService.storeUserData(data.token, user);
           this.snackBar.open('You are now logged in', 'Close');
-          this.router.navigate(['/books']).then();
+          this.router.navigate(['/favourite']).then();
         }
       },
       error: err => {

@@ -15,7 +15,7 @@ import {
   BooksListComponent,
   DetailsDialComponent,
 } from './content/books/books-list/books-list.component';
-import { ShowBookComponent } from './content/books/show-book/show-book.component';
+import { FavouriteComponent } from './content/books/show-book/favourite.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
@@ -46,7 +46,7 @@ import { DetailsBookComponent } from './content/books/details-book/details-book.
     IntroComponent,
     NotFoundComponent,
     BooksListComponent,
-    ShowBookComponent,
+    FavouriteComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
     DetailsDialComponent,

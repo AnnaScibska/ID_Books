@@ -8,4 +8,5 @@ export class ApiBook {
   public year: string;
   public imageUrl: string;
   public comment: string;
+  public edited = false;
 }

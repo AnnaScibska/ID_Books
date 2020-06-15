@@ -1,7 +1,6 @@
-<p>details-book works!!!!!</p>
 <div class="details-book" *ngIf="book">
   <mat-card>
-    <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" />
+    <img src="{{ book.volumeInfo.imageLinks?.thumbnail }}" />
     <mat-card-header>
       <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
       <mat-card-title>{{ book.volumeInfo.authors }} </mat-card-title>

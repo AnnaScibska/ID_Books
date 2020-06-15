@@ -37,7 +37,7 @@ router.post(
                 description: req.body.description,
                 year: req.body.year,
                 imageUrl: req.body.imageUrl,
-                comment: req.body.comment,
+                comment: req.body.comment || '',
                 user_id: user._id
             });
 

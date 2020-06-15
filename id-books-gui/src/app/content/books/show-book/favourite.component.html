@@ -1,0 +1,28 @@
+<div class="book-favourite" *ngFor="let b of favouriteBooks">
+  <mat-card>
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-title>{{ b.title }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{ b.imageUrl }}" alt="book picture" />
+      <mat-card-subtitle>Author : {{ b.author }}</mat-card-subtitle>
+      <mat-card-content *ngIf="!b.edited">My notes : {{ b.comment || "No notes yet" }}</mat-card-content>
+    </mat-card-content>
+    <mat-form-field *ngIf="b.edited" appearance="fill" class="form-notes">
+      <mat-label>My personal notes</mat-label>
+      <textarea name="notes" id="note" [(ngModel)]="b.comment" matInput
+      ></textarea>
+    </mat-form-field>
+    <mat-card-actions>
+      <button mat-raised-button class="button-favourite" (click)="deleteBook(b._id)">
+        Delete book
+      </button>
+      <button *ngIf="!b.edited" mat-raised-button class="button-favourite" (click)="addNote(b)">
+        Add note
+      </button>
+      <button *ngIf="b.edited" mat-raised-button class="button-favourite" (click)="updateBook(b, b.comment)">
+        Save note
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

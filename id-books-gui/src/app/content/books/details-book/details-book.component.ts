@@ -18,12 +18,12 @@ export class DetailsBookComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let isbn = this.activatedRoute.snapshot.params['isbn'];
+    const isbn = this.activatedRoute.snapshot.params['isbn'];
 
     this.searchService.SearchByISBN(isbn).subscribe((data) => {
       console.log(data);
-      console.log('heeeeeeeeeerrrrrrreeeeeee', data.items);
-      this.book = data.items[0];
+      console.log('heeeeeeeeeerrrrrrreeeeeee', data);
+      this.book = data['items'][0];
     });
   }
 }
